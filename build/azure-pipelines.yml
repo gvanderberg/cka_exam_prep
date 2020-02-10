@@ -1,0 +1,27 @@
+trigger:
+  - master
+
+variables:
+- group: 'Terraform BE'
+- group: 'Terraform CLI'
+- name: resource_group_location
+  value: 'southafricanorth'
+- name: resource_group_name
+  value: 'azrg-dev-zn-k8s'
+- name: tags_created_by
+  value: 'Terraform'
+- name: tags_environment
+  value: 'Production'
+- name: tags_location
+  value: '$(resource_group_location)'
+- name: tags_managed_by
+  value: 'Gareth'
+- name: tf_path
+  value: '$(Pipeline.Workspace)/drop'
+- name: tf_state_key
+  value: '$(Build.BuildId)'
+- name: workspace_name
+  value: 'cka_exam_prep'
+
+stages:
+- template: terraform-stages.yml

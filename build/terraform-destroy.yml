@@ -1,0 +1,10 @@
+jobs:
+- deployment: terraform_destroy
+  displayName: 'terraform destroy'
+  environment: prod
+
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - template: terraform-destroy-steps.yml
