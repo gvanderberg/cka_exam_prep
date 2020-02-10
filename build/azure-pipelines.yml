@@ -3,7 +3,7 @@ trigger:
 
 variables:
 - group: 'Terraform BE'
-- group: 'Terraform CLI'
+- group: 'Terraform CLI (OUTsurance)'
 - name: resource_group_location
   value: 'southafricanorth'
 - name: resource_group_name
