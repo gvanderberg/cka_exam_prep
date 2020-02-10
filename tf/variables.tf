@@ -1,3 +1,7 @@
+variable "admin_password" {
+  default = "__admin_password__"
+}
+
 variable "resource_group_location" {
   default = "__resource_group_location__"
 }

@@ -1,3 +1,8 @@
+variable "admin_password" {
+  description = "The password associated with the local administrator account."
+  type        = string
+}
+
 variable "backend_address_pool_id" {
   description = "The ID of the Load Balancer Backend Address Pool which this Network Interface which should be connected to."
   type        = string

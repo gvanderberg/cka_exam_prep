@@ -33,6 +33,7 @@ module "vnet" {
 module "master" {
   source = "./modules/vm"
 
+  admin_password          = var.admin_password
   backend_address_pool_id = module.lb.backend_address_pool_id
   computer_name           = "azvpznmaster0"
   resource_group_name     = module.rg.resource_group_name
@@ -47,6 +48,7 @@ module "master" {
 module "worker" {
   source = "./modules/vm"
 
+  admin_password          = var.admin_password
   backend_address_pool_id = ""
   computer_name           = "azvpznworker0"
   resource_group_name     = module.rg.resource_group_name

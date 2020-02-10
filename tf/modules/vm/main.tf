@@ -63,7 +63,7 @@ resource "azurerm_virtual_machine" "this" {
   os_profile {
     computer_name  = format("%s%s", var.computer_name, count.index + 1)
     admin_username = "azuresupport"
-    admin_password = "Password1234!"
+    admin_password = var.admin_password
   }
 
   os_profile_linux_config {
