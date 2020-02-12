@@ -85,7 +85,7 @@ resource "azurerm_virtual_machine_extension" "this" {
 
   settings = <<SETTINGS
   {
-  "commandToExecute": "bash curl -sLSf https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh | sudo sh",
+  "commandToExecute": "curl -sLSf https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh | sudo sh",
   "timestamp" : "11"
   }
 SETTINGS
