@@ -79,14 +79,15 @@ resource "azurerm_virtual_machine_extension" "this" {
   resource_group_name  = var.resource_group_name
   location             = var.resource_group_location
   virtual_machine_name = azurerm_virtual_machine.this[count.index].name
-  publisher            = "Microsoft.OSTCExtensions"
-  type                 = "CustomScriptForLinux"
-  type_handler_version = "1.2"
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.1"
 
   settings = <<SETTINGS
   {
-  "commandToExecute": "curl -sLSf https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh | sudo sh",
-  "timestamp" : "11"
+  "fileUris": "https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh",
+  "commandToExecute": "./setup.sh",
+  "timestamp" : "12"
   }
 SETTINGS
 
