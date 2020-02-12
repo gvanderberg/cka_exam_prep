@@ -72,3 +72,22 @@ resource "azurerm_virtual_machine" "this" {
 
   tags = var.tags
 }
+
+resource "azurerm_virtual_machine_extension" "this" {
+  name                 = "KubeInit"
+  resource_group_name  = var.resource_group_name
+  location             = var.resource_group_location
+  virtual_machine_name = azurerm_virtual_machine.this.name
+  publisher            = "Microsoft.OSTCExtensions"
+  type                 = "CustomScriptForLinux"
+  type_handler_version = "1.2"
+
+  settings = <<SETTINGS
+  {
+  "commandToExecute": "bash curl -sLSf https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh | sudo sh",
+  "timestamp" : "11"
+  }
+SETTINGS
+
+  tags = var.tags
+}
