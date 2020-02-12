@@ -85,7 +85,7 @@ resource "azurerm_virtual_machine_extension" "this" {
 
   settings = <<SETTINGS
   {
-  "fileUris": "https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh",
+  "fileUris": ["https://raw.githubusercontent.com/gvanderberg/cka_exam_prep/master/scripts/setup.sh"],
   "commandToExecute": "./setup.sh",
   "timestamp" : "12"
   }
