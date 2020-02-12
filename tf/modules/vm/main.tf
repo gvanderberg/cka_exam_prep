@@ -74,10 +74,11 @@ resource "azurerm_virtual_machine" "this" {
 }
 
 resource "azurerm_virtual_machine_extension" "this" {
+  count                = var.virtual_machine_count
   name                 = "KubeInit"
   resource_group_name  = var.resource_group_name
   location             = var.resource_group_location
-  virtual_machine_name = azurerm_virtual_machine.this.name
+  virtual_machine_name = azurerm_virtual_machine.this[count.index].name
   publisher            = "Microsoft.OSTCExtensions"
   type                 = "CustomScriptForLinux"
   type_handler_version = "1.2"
