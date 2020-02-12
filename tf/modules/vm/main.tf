@@ -79,9 +79,9 @@ resource "azurerm_virtual_machine_extension" "this" {
   resource_group_name  = var.resource_group_name
   location             = var.resource_group_location
   virtual_machine_name = azurerm_virtual_machine.this[count.index].name
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.1"
+  publisher            = "Microsoft.OSTCExtensions"
+  type                 = "CustomScriptForLinux"
+  type_handler_version = "1.2"
 
   settings = <<SETTINGS
   {
