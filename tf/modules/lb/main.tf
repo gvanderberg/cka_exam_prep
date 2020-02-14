@@ -43,5 +43,6 @@ resource "azurerm_lb_rule" "this" {
   backend_port                   = 6443
   frontend_ip_configuration_name = "LoadBalancerFrontEnd"
   frontend_port                  = 6443
+  probe_id                       = azurerm_lb_probe.this.id
   protocol                       = "tcp"
 }
