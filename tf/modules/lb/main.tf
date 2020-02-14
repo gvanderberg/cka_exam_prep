@@ -26,3 +26,22 @@ resource "azurerm_lb_backend_address_pool" "this" {
   resource_group_name = var.resource_group_name
   loadbalancer_id     = azurerm_lb.this.id
 }
+
+resource "azurerm_lb_probe" "this" {
+  name                = "kubernetes-apiserver-probe"
+  resource_group_name = var.resource_group_name
+  loadbalancer_id     = azurerm_lb.this.id
+  port                = 6443
+  protocol            = "tcp"
+}
+
+resource "azurerm_lb_rule" "this" {
+  name                           = "kubernetes-apiserver-rule"
+  resource_group_name            = var.resource_group_name
+  loadbalancer_id                = azurerm_lb.this.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.this.id
+  backend_port                   = 6443
+  frontend_ip_configuration_name = "LoadBalancerFrontEnd"
+  frontend_port                  = 6443
+  protocol                       = "tcp"
+}
